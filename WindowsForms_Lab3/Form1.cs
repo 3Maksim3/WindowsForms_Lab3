@@ -19,61 +19,66 @@ namespace WindowsForms_Lab3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            //  Проверяем на обишки и корректность вводимых значений
             try
-            {
-                Fraction Drop1 = new Fraction(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox3.Text));
-                Fraction Drop2 = new Fraction(Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox2.Text));
-                Fraction Drop = new Fraction();
+            {  
+                Fraction Drop1 = new Fraction(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox3.Text)); // Создаем объект класса и передаем ему значения знаменателя и числителя
+                Fraction Drop2 = new Fraction(Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox2.Text)); // Создаем объект класса и передаем ему значения знаменателя и числителя
+                Fraction Drop = new Fraction(); // Создаем объект класса
 
-                switch (comboBox1.Text)
+                switch (comboBox1.Text) // Проверка на выбор операции двух дройбей 
                 {
-                    case "+":
-                        if (Convert.ToInt32(textBox3.Text) == 0 || Convert.ToInt32(textBox2.Text) == 0)
+                    // Кейс с операцией сложения
+                    case "+": 
+                        if (Convert.ToInt32(textBox3.Text) == 0 || Convert.ToInt32(textBox2.Text) == 0) // Проверка на 0 в знаменателе
                             MessageBox.Show("В знаменателе не может быть 0!");
-                        Drop = Drop1 + Drop2;
-                        richTextBox1.Text += Drop + "\n";
+                        Drop = Drop1 + Drop2; // Присваиваем объекту значение суммы двух дробей
+                        richTextBox1.Text += Drop + "\n"; // Выводим значение дроби
                         richTextBox1.Text += "\nСокращенная:\n";
-                        Drop.Simplify();
-                        richTextBox1.Text += "\n" + Drop;
+                        Drop.Simplify(); // С помощью метода сокращаем дробь
+                        richTextBox1.Text += "\n" + Drop; // Выводим сокращенную дробь
                         break;
+                    // Кейс с операцией разности
                     case "-":
-                        if (Convert.ToInt32(textBox3.Text) == 0 || Convert.ToInt32(textBox2.Text) == 0)
+                        if (Convert.ToInt32(textBox3.Text) == 0 || Convert.ToInt32(textBox2.Text) == 0) // Проверка на 0 в знаменателе
                             MessageBox.Show("В знаменателе не может быть 0!");
-                        Drop = Drop1 - Drop2;
-                        richTextBox1.Text += Drop + "\n";
+                        Drop = Drop1 - Drop2; // Присваиваем объекту значение разности двух дробей
+                        richTextBox1.Text += Drop + "\n";  // Выводим значение дроби
                         richTextBox1.Text += "\nСокращенная:\n";
-                        Drop.Simplify();
-                        richTextBox1.Text += "\n" + Drop;
+                        Drop.Simplify(); // С помощью метода сокращаем дробь
+                        richTextBox1.Text += "\n" + Drop; // Выводим сокращенную дробь
                         break;
+                    // Кейс с операцией умножения
                     case "*":
-                        if (Convert.ToInt32(textBox3.Text) == 0 || Convert.ToInt32(textBox2.Text) == 0)
+                        if (Convert.ToInt32(textBox3.Text) == 0 || Convert.ToInt32(textBox2.Text) == 0) // Проверка на 0 в знаменателе
                             MessageBox.Show("В знаменателе не может быть 0!");
-                        Drop = Drop1 * Drop2;
-                        richTextBox1.Text += Drop + "\n";
+                        Drop = Drop1 * Drop2; // Присваиваем объекту значение умножения двух дробей
+                        richTextBox1.Text += Drop + "\n";  // Выводим значение дроби
                         richTextBox1.Text += "\nСокращенная:\n";
-                        Drop.Simplify();
-                        richTextBox1.Text += "\n" + Drop;
+                        Drop.Simplify(); // С помощью метода сокращаем дробь
+                        richTextBox1.Text += "\n" + Drop; // Выводим сокращенную дробь
                         break;
+                    // Кейс с операцией деления
                     case "/":
-                        if (Convert.ToInt32(textBox3.Text) == 0 || Convert.ToInt32(textBox2.Text) == 0)
+                        if (Convert.ToInt32(textBox3.Text) == 0 || Convert.ToInt32(textBox2.Text) == 0) // Проверка на 0 в знаменателе 
                             MessageBox.Show("В знаменателе не может быть 0!");
-                        Drop = Drop1 / Drop2;
-                        richTextBox1.Text += Drop + "\n";
+                        Drop = Drop1 / Drop2; // Присваиваем объекту значение деления одной дроби на другую
+                        richTextBox1.Text += Drop + "\n";  // Выводим значение дроби
                         richTextBox1.Text += "\nСокращенная:\n";
-                        Drop.Simplify();
-                        richTextBox1.Text += "\n" + Drop;
+                        Drop.Simplify(); // С помощью метода сокращаем дробь
+                        richTextBox1.Text += "\n" + Drop; // Выводим сокращенную дробь
                         break;
                 }
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message); // Выводим сообщение об ошибке
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // Очищаем все поля для ввода и одно поле для вывода
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
